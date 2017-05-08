@@ -1,0 +1,42 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        applicationId "com.mifirma.android"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 5
+        versionName "2.0.1"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("/Users/tomas/AndroidStudioProjects/MiFirma.jks")
+            storePassword "mifirma.1024"
+            keyAlias "mifirmaandroid"
+            keyPassword "mifirma.1024"
+            v2SigningEnabled true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_6
+        targetCompatibility JavaVersion.VERSION_1_6
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            zipAlignEnabled true
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:support-v4:25.3.1'
+}

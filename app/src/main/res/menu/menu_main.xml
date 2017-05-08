@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" tools:context="com.mifirma.android.MainActivity">
+    <item
+       android:id="@+id/refresh_button"
+       android:icon="@drawable/refresh"
+       android:title="@string/refresh"
+       android:showAsAction="always"
+       android:visible="false"/>
+    <!--
+       <item android:id="@+id/action_settings" android:title="@string/action_settings"
+           android:orderInCategory="100" android:showAsAction="never" />
+       -->
+</menu>

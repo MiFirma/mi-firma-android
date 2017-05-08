@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" tools:context="com.mifirma.android.MainActivity">
+
+   <item android:id="@+id/action_nfc" android:title="@string/action_nfc"
+       android:showAsAction="never"
+       android:visible="true"
+       android:checkable="true"/>
+</menu>
