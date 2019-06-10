@@ -42,10 +42,10 @@ public class InitiativeAdapter extends BaseAdapter {
         Initiative objectItem = initiativeList.get(position);
 
         // Componemos la vista con los datos del elemento.
-        TextView titleTextViewItem = (TextView) convertView.findViewById(R.id.initiative_title);
+        TextView titleTextViewItem = convertView.findViewById(R.id.initiative_title);
 
         byte[] byteArray = objectItem.getBanner();
-        ImageView imageView = (ImageView) convertView.findViewById(R.id.initiative_image);
+        ImageView imageView = convertView.findViewById(R.id.initiative_image);
         Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
         imageView.setImageBitmap(bmp);
         imageView.setMaxHeight(5);

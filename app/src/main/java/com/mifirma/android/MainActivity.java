@@ -30,6 +30,9 @@ import java.util.Properties;
  * @author Javier */
 public class MainActivity extends FragmentActivity {
 
+    /** Indica si la aplicaci&oacute;n est&aacute; en modo depuraci&oacute;n. */
+    public static final boolean DEBUG = true;
+
     /** Indica si se ha hecho la comprobacion de si el dispositivo tiene NFC. Se usa para evitar
      * detectarlo en cada carga de la actividad. */
     private boolean nfcAvailableChecked = false;

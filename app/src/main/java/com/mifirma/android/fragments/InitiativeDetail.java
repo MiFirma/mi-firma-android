@@ -48,8 +48,8 @@ public class InitiativeDetail extends Fragment {
                              ViewGroup container,
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_initiative_detail, container, false);
-        final WebView content = (WebView) rootView.findViewById(R.id.initiative_web_view);
-        button = (Button) rootView.findViewById(R.id.sign_button);
+        final WebView content = rootView.findViewById(R.id.initiative_web_view);
+        button = rootView.findViewById(R.id.sign_button);
 
         // Cargamos el contenido en el WebView.
         content.loadDataWithBaseURL("", initiative.toHtmlString(), "text/html", "UTF-8", "");

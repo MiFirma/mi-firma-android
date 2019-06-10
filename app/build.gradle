@@ -26,10 +26,10 @@ android {
 
     defaultConfig {
         applicationId "com.mifirma.android"
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 28
-        versionCode 5
-        versionName "2.0.1"
+        versionCode 6
+        versionName "2.0.2"
     }
 
     signingConfigs {

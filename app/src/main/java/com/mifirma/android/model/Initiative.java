@@ -21,6 +21,8 @@ import org.w3c.dom.NodeList;
 
 import android.util.Base64;
 
+import com.mifirma.android.MainActivity;
+
 import es.gob.afirma.core.misc.http.UrlHttpManagerFactory;
 import es.gob.afirma.core.misc.http.UrlHttpMethod;
 
@@ -65,16 +67,16 @@ public final class Initiative implements Parcelable {
     @Override
     public String toString() {
         return
-                " Identificador: " + this.id + '\n' + //$NON-NLS-1$
-                        " Titulo: " + this.title + '\n' + //$NON-NLS-1$
-                        " Promotor: " + this.promoter + '\n' + //$NON-NLS-1$
-                        " Sitio Web del promotor: " + this.promoterUrl  + '\n' + //$NON-NLS-1$
-                        " Fecha de inicio: " + this.initDate + '\n' + //$NON-NLS-1$
-                        " Fecha de fin: " + this.endDate + '\n' + //$NON-NLS-1$
-                        " Firmas necesarias: " + this.numRequiredSignatures + '\n' + //$NON-NLS-1$
-                        " Firmas recogidas: " + this.numActualSignatures + '\n' + //$NON-NLS-1$
-                        " Codigo: " + this.code //$NON-NLS-1$
-                ;
+            " Identificador: " + this.id + '\n' + //$NON-NLS-1$
+                " Titulo: " + this.title + '\n' + //$NON-NLS-1$
+                " Promotor: " + this.promoter + '\n' + //$NON-NLS-1$
+                " Sitio Web del promotor: " + this.promoterUrl  + '\n' + //$NON-NLS-1$
+                " Fecha de inicio: " + this.initDate + '\n' + //$NON-NLS-1$
+                " Fecha de fin: " + this.endDate + '\n' + //$NON-NLS-1$
+                " Firmas necesarias: " + this.numRequiredSignatures + '\n' + //$NON-NLS-1$
+                " Firmas recogidas: " + this.numActualSignatures + '\n' + //$NON-NLS-1$
+                " Codigo: " + this.code //$NON-NLS-1$
+            ;
     }
 
     /** Crea una iniciativa a partir del nodo de su definici&oacute;n XML.
@@ -131,7 +133,7 @@ public final class Initiative implements Parcelable {
                 if (nc != null) {
                     provincesCodes = nc.trim().split(",");
                 }
-                provinces = new ArrayList<RegionalIlpHelper.Province>(0);
+                provinces = new ArrayList<>(0);
             }
         }
     }
@@ -159,8 +161,12 @@ public final class Initiative implements Parcelable {
             final String url = (baseUrl + (baseUrl.endsWith("/") ? "" : "/") + bannerFileName).replace(" ", "%20").replace("$$ID$$", Integer.toString(id)); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$
             LOGGER.info("Descargando imagen de la iniciativa desde " + url); //$NON-NLS-1$
 
-            return UrlHttpManagerFactory.getInstalledManager().readUrl(url, -1, "application/xml", "text/xml", UrlHttpMethod.GET);
-            //return UrlHttpManagerFactory.getInstalledManager().readUrl("https://www.google.es/images/branding/googleg/1x/googleg_standard_color_128dp.png", -1, "application/xml", "text/xml", UrlHttpMethod.GET);
+            if (!MainActivity.DEBUG) {
+                return UrlHttpManagerFactory.getInstalledManager().readUrl(url, -1, "application/xml", "text/xml", UrlHttpMethod.GET);
+            }
+            else {
+                return UrlHttpManagerFactory.getInstalledManager().readUrl("https://www.google.es/images/branding/googleg/1x/googleg_standard_color_128dp.png", -1, "application/xml", "text/xml", UrlHttpMethod.GET);
+            }
 
         }
         return null;
@@ -300,7 +306,7 @@ public final class Initiative implements Parcelable {
     }
 
     public List<String> getProvincesNames() {
-        List<String> res = new ArrayList<String>(provinces.size());
+        List<String> res = new ArrayList<>(provinces.size());
         for(final RegionalIlpHelper.Province p : provinces){
             res.add(p.toString());
         }

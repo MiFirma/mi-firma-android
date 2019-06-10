@@ -76,7 +76,7 @@ public final class InitiativeFragment extends Fragment implements AbsListView.On
         View view = inflater.inflate(R.layout.fragment_iniciative, container, false);
 
         // Set the adapter
-        mListView = (AbsListView) view.findViewById(android.R.id.list);
+        mListView = view.findViewById(android.R.id.list);
         mListView.setAdapter(mAdapter);
 
         // Set OnItemClickListener so we can be notified on item clicks

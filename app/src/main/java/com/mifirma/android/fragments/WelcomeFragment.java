@@ -44,7 +44,7 @@ public class WelcomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_welcome, container, false);
-        button = (Button) rootView.findViewById(R.id.welcome_button);
+        button = rootView.findViewById(R.id.welcome_button);
         addListenerOnButton();
 
         // Pintamos el nombre de la version.

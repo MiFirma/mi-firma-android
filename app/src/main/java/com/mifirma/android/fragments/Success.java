@@ -31,8 +31,6 @@ public class Success extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
     }
 
     @Override
@@ -40,7 +38,7 @@ public class Success extends Fragment{
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_success, container, false);
 
-        button = (Button) rootView.findViewById(R.id.success_button);
+        button = rootView.findViewById(R.id.success_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
