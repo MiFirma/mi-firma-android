@@ -1,15 +1,12 @@
 package com.mifirma.android.fragments;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,24 +46,10 @@ public class WelcomeFragment extends Fragment {
 
         // Pintamos el nombre de la version.
         String versionName = BuildConfig.VERSION_NAME;
-        TextView version = (TextView) rootView.findViewById(R.id.version);
-        TextView welcome = (TextView) rootView.findViewById(R.id.welcome);
+        TextView version = rootView.findViewById(R.id.version);
+        TextView welcome = rootView.findViewById(R.id.welcome);
         welcome.setMovementMethod(LinkMovementMethod.getInstance());
         version.setText(versionName);
-
-
-        ImageView img = (ImageView)rootView.findViewById(R.id.miFirmaImg);
-
-        img.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse("https://www.mifirma.com"));
-                startActivity(intent);
-            }
-        });
 
         return rootView;
     }
@@ -79,9 +62,11 @@ public class WelcomeFragment extends Fragment {
                     new RequestInitiativesTask(WelcomeFragment.this.getActivity()).execute();
                 }
                 else{
-                    Toast.makeText(WelcomeFragment.this.getActivity().getBaseContext(),
-                            R.string.connection_msg, Toast.LENGTH_SHORT)
-                            .show();
+                    Toast.makeText(
+                        WelcomeFragment.this.getActivity().getBaseContext(),
+                        R.string.connection_msg,
+                        Toast.LENGTH_SHORT
+                    ).show();
                 }
             }
         });
